@@ -42,5 +42,28 @@
   document.querySelectorAll(".reveal").forEach(el => io ? io.observe(el) : el.classList.add("in"));
 
   document.querySelectorAll("[data-year]").forEach(el => (el.textContent = new Date().getFullYear()));
+  /* stats count-up: on first view and on every hover */
+  const reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function countUp(b) {
+    const target = +b.dataset.count, suf = b.dataset.suffix || "";
+    if (reduce || !target) { b.textContent = target + suf; return; }
+    if (b._raf) cancelAnimationFrame(b._raf);
+    const t0 = performance.now(), dur = 900;
+    const step = now => {
+      const p = Math.min((now - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3);
+      b.textContent = Math.round(target * e) + suf;
+      if (p < 1) b._raf = requestAnimationFrame(step);
+    };
+    b._raf = requestAnimationFrame(step);
+  }
+  const nums = document.querySelectorAll("[data-count]");
+  nums.forEach(b => b.closest(".stat").addEventListener("mouseenter", () => countUp(b)));
+  if ("IntersectionObserver" in window) {
+    const so = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { countUp(e.target); so.unobserve(e.target); }
+    }), { threshold: .5 });
+    nums.forEach(b => so.observe(b));
+  }
+
   apply(lang);
 })();

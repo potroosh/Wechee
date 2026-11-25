@@ -212,3 +212,38 @@ html[lang="en"] .card h3{font-family:var(--font-display-en)}
 }
 .stat b{direction:ltr}
 html[dir="rtl"] .stat b{text-align:right}
+
+/* ---------- Hover: orange gradient ring on buttons ---------- */
+@property --ring{syntax:'<angle>';initial-value:0deg;inherits:false}
+.btn,.lang-btn{position:relative;isolation:isolate}
+.btn::before,.lang-btn::before,.wa-float::before{
+  content:"";position:absolute;inset:-4px;border-radius:999px;padding:2px;pointer-events:none;opacity:0;
+  background:conic-gradient(from var(--ring),transparent 0deg,#FFD08A 50deg,#FF8A3D 110deg,#FF6B1A 170deg,#FF3D00 220deg,transparent 300deg);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+}
+.wa-float::before{border-radius:50%}
+.cta-band .btn::before{background:conic-gradient(from var(--ring),transparent 0deg,#fff 70deg,#FFD08A 140deg,#0B0B0B 210deg,transparent 300deg)}
+.btn:hover::before,.lang-btn:hover::before,.wa-float:hover::before,
+.btn:focus-visible::before{animation:ring 1.5s ease-out forwards}
+@keyframes ring{
+  0%{--ring:0deg;opacity:0}
+  15%{opacity:1}
+  65%{opacity:1}
+  100%{--ring:360deg;opacity:0}
+}
+
+/* ---------- Hover: stats ---------- */
+.stat{position:relative;overflow:hidden;cursor:default;transition:background .35s}
+.stat::after{
+  content:"";position:absolute;inset-inline-start:28px;bottom:22px;height:2px;width:0;
+  background:linear-gradient(90deg,#FF3D00,#FF6B1A,#FFD08A);border-radius:2px;transition:width .5s ease
+}
+.stat b{transition:transform .35s ease,color .35s ease}
+.stat:hover{background:radial-gradient(120% 90% at 50% 120%,rgba(255,107,26,.22),transparent 70%)}
+.stat:hover b{transform:translateY(-6px) scale(1.06);color:var(--orange)}
+.stat:hover::after{width:48px}
+@media (prefers-reduced-motion:reduce){
+  .btn:hover::before,.lang-btn:hover::before,.wa-float:hover::before{animation:none;opacity:1}
+  .stat:hover b{transform:none}
+}
