@@ -333,26 +333,22 @@ html[lang="en"] .founders-note{line-height:1.7}
 .svc-row:hover .svc-icon{background:transparent;border-color:var(--orange);color:var(--orange);transform:rotate(45deg)}
 html[dir="rtl"] .svc-row:hover .svc-icon{transform:rotate(-45deg)}
 @media (hover:hover){.svc-list:hover .svc-row:not(:hover){opacity:.4}}
-.floaters{position:absolute;inset:0;z-index:-1;pointer-events:none;perspective:700px}
-.fl{
-  position:absolute;left:var(--x);top:var(--y);direction:ltr;
-  opacity:0;transform:translate3d(0,46px,0) scale(.55) rotateY(var(--r));transform-style:preserve-3d;
-  transition:opacity .45s ease var(--d),transform .8s cubic-bezier(.2,.8,.2,1) var(--d)
-}
-.svc-row:hover .fl{opacity:1;transform:translate3d(0,0,0) scale(1) rotateY(var(--r))}
+.floaters{position:absolute;inset:0;z-index:-1;pointer-events:none;perspective:500px}
+.fl{position:absolute;left:0;top:0;direction:ltr;opacity:0;transition:opacity .3s;will-change:transform;transform-style:preserve-3d}
+.svc-row.trail .fl{opacity:1}
 .fl b{
   display:block;position:relative;font-family:var(--font-display-en);font-weight:800;
-  font-size:clamp(4.5rem,8vw,7.5rem);line-height:1;color:transparent;
-  -webkit-text-stroke:1.3px rgba(255,107,26,.55);transform-style:preserve-3d;
-  animation:float3d 4s ease-in-out infinite;animation-play-state:paused;animation-delay:var(--d)
+  font-size:2.1rem;line-height:1;color:transparent;
+  -webkit-text-stroke:1.2px rgba(255,107,26,.95);transform-style:preserve-3d;
+  animation:float3d 2.6s ease-in-out infinite;animation-play-state:paused;animation-delay:var(--d)
 }
 .fl b::before,.fl b::after{content:attr(data-l);position:absolute;left:0;top:0;color:transparent}
-.fl b::before{-webkit-text-stroke:1px rgba(255,107,26,.26);transform:translate3d(6px,6px,-14px)}
-.fl b::after{-webkit-text-stroke:1px rgba(255,107,26,.11);transform:translate3d(12px,12px,-28px)}
-.svc-row:hover .fl b{animation-play-state:running}
+.fl b::before{-webkit-text-stroke:1px rgba(255,107,26,.45);transform:translate3d(3px,3px,-8px)}
+.fl b::after{-webkit-text-stroke:1px rgba(255,107,26,.2);transform:translate3d(6px,6px,-16px)}
+.svc-row.trail .fl b{animation-play-state:running}
 @keyframes float3d{
-  0%,100%{transform:translateY(0) rotateX(0deg) rotateY(0deg)}
-  50%{transform:translateY(-12px) rotateX(14deg) rotateY(-22deg)}
+  0%,100%{transform:rotateX(0deg) rotateY(0deg)}
+  50%{transform:rotateX(18deg) rotateY(-28deg)}
 }
 @media (prefers-reduced-motion:reduce){.fl b{animation:none}.fl{transition:opacity .3s}}
 @media (max-width:760px){.floaters{display:none}}
