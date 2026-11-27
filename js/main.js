@@ -65,37 +65,5 @@
     nums.forEach(b => so.observe(b));
   }
 
-  /* services: initials trail the cursor */
-  if (window.matchMedia && matchMedia("(hover: hover)").matches) {
-    document.querySelectorAll(".svc-row").forEach(row => {
-      const fls = [...row.querySelectorAll(".fl")];
-      if (!fls.length) return;
-      const pts = fls.map(() => ({ x: 0, y: 0 }));
-      let tx = 0, ty = 0, raf = null, on = false;
-      const ease = [0.32, 0.2, 0.13];
-      const tick = () => {
-        const dir = document.documentElement.dir === "rtl" ? -1 : 1;
-        let moving = false;
-        pts.forEach((p, i) => {
-          const gx = tx + dir * (22 + i * 30) - (dir < 0 ? 30 : 0), gy = ty - 14 + i * 4;
-          const k = reduce ? 1 : ease[i] || 0.1;
-          p.x += (gx - p.x) * k; p.y += (gy - p.y) * k;
-          if (Math.abs(gx - p.x) + Math.abs(gy - p.y) > 0.3) moving = true;
-          fls[dir < 0 ? fls.length - 1 - i : i].style.transform = `translate3d(${p.x}px,${p.y}px,0)`;
-        });
-        raf = (on || moving) ? requestAnimationFrame(tick) : null;
-      };
-      const pos = e => { const r = row.getBoundingClientRect(); tx = e.clientX - r.left; ty = e.clientY - r.top; };
-      row.addEventListener("mouseenter", e => {
-        pos(e); on = true; row.classList.add("trail");
-        const dir = document.documentElement.dir === "rtl" ? -1 : 1;
-        pts.forEach((p, i) => { p.x = tx + dir * 10 * i; p.y = ty + 20; });
-        if (!raf) raf = requestAnimationFrame(tick);
-      });
-      row.addEventListener("mousemove", e => { pos(e); if (!raf) raf = requestAnimationFrame(tick); });
-      row.addEventListener("mouseleave", () => { on = false; row.classList.remove("trail"); });
-    });
-  }
-
   apply(lang);
 })();
