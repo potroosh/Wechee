@@ -247,3 +247,9 @@ html[dir="rtl"] .stat b{text-align:right}
   .btn:hover::before,.lang-btn:hover::before,.wa-float:hover::before{animation:none;opacity:1}
   .stat:hover b{transform:none}
 }
+
+/* Logo image */
+.logo img{height:30px;width:auto;display:block}
+.footer .logo img{height:34px}
+@media (max-width:760px){.logo img{height:22px}.footer .logo img{height:28px}}
+.footer .logo{display:inline-flex}
