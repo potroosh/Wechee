@@ -51,7 +51,7 @@ window.I18N = {
     /* about */
     "about.title": "درباره ما | WECHEE",
     "about.h1": "درباره <span class='accent'>ما</span>",
-    "about.lead": "ما باور داریم سوشال مدیا وقتی جواب می‌دهد که واقعی، منظم و هدفمند باشد.",
+    "about.lead": "ما باور داریم که محتوای خلاقانه بدون شناخت مخاطب، تبلیغات بدون استراتژی و طراحی بدون درک هویت برند، نمی‌توانند تمام ظرفیت یک کسب‌وکار را به کار بگیرند.<br><strong>به همین دلیل در Wechee، استراتژی، خلاقیت و تکنولوژی را از یکدیگر جدا نمی‌کنیم.</strong>",
     "about.label": "داستان ما",
     "about.h2": "کنار شما، از ایده تا نتیجه",
     "about.p1": "<strong>WECHEE</strong> یک تیم کوچک و متمرکز در حوزه دیجیتال مارکتینگ و سوشال مدیاست. کار ما ساختن استراتژی محتوا، تقویم محتوایی و مسیر رشد برای کسب‌وکارهاست.",
@@ -167,7 +167,7 @@ window.I18N = {
 
     "about.title": "About us | WECHEE",
     "about.h1": "About <span class='accent'>us</span>",
-    "about.lead": "We believe social media works when it's real, consistent and purposeful.",
+    "about.lead": "We believe creative content without audience insight, advertising without strategy and design without an understanding of brand identity can't unlock a business's full potential.<br><strong>That's why at Wechee, we never separate strategy, creativity and technology.</strong>",
     "about.label": "Our story",
     "about.h2": "With you, from idea to results",
     "about.p1": "<strong>WECHEE</strong> is a small, focused team in digital marketing and social media. We build content strategies, content calendars and growth paths for businesses.",
